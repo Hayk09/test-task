@@ -1,8 +1,9 @@
 import  {todoActionType,TodoState,TodoTypes,Item } from '../types'
 import { v4 as uuidv4 } from 'uuid';
-
+import {getIsAuth} from '../../util'
 
 const initialState: TodoState = {
+    isAuth: !!getIsAuth(),
      contacts: [
          {id: uuidv4(), name: 'Deny' , phone: '0989025585', email: 'Armenia@mail.ru',activity:true  },
          {id: uuidv4(), name: 'Mark' , phone: '0665326566', email: 'Moldova@mail.ru',activity:true },

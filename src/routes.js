@@ -8,6 +8,7 @@ import Error from "./pages/Login/Error"
 
 export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {
+    
     return (
       <Switch>
         <Route path='/' exact>

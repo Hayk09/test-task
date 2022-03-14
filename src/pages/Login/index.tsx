@@ -16,7 +16,7 @@ import { useRoutes } from '../../routes';
 const Login = () => {
    const history = useHistory()
    const routes = useRoutes()
-  let regexp = new RegExp('^[A-z\s][A-z\d\s]+$')
+
 
   const validationsSchema = yup.object().shape({
     password: yup
