@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import store from "../../store";
 import Modal from './Modal';
@@ -16,7 +16,6 @@ import {
   TableRow,
   Stack,
   Typography,
-
 } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -37,24 +36,8 @@ const Contacts = () => {
   const history = useHistory()
 
   const validationsSchema = yup.object().shape({
-    // phone: yup
-    //   .number()
-    //   .typeError('should be a string')
-    //   .required('necessarily'),
-    // name: yup
-    //   .string()
-    //   .min(4, 'Too short!')
-    //   .max(20, 'short!')
-    //   .required('necessarily'),
-    // email: yup
-    //   .string()
-    //   .email('enter a valid email address')
-    //   .required('necessarily'),
-
 
   })
-
-
 
   const onRemove = (id: string | undefined) => {
     dispatch({
@@ -67,12 +50,6 @@ const Contacts = () => {
 
   }
 
-  useEffect(() => {
-
-  }, [Data])
-
-
-
   return (
 
     <>
@@ -82,27 +59,27 @@ const Contacts = () => {
         // marginRight: '8rem'
         padding: '4rem'
       }}>
-         <Button 
-           sx={{
-             height: '35px',
-             width: '150px',
-             marginTop: '2rem'
-             
-           }}
-           variant="outlined" 
-           onClick={()=>history.push('/')}>
+        <Button
+          sx={{
+            height: '35px',
+            width: '150px',
+            marginTop: '2rem'
+
+          }}
+          variant="outlined"
+          onClick={() => history.push('/')}>
           Sign Out
         </Button>
         <Modal />
-        <Button 
-           sx={{
-             height: '35px',
-             width: '150px',
-             marginTop: '2rem'
-             
-           }}
-           variant="outlined" 
-           onClick={()=>history.push('/search')}>
+        <Button
+          sx={{
+            height: '35px',
+            width: '150px',
+            marginTop: '2rem'
+
+          }}
+          variant="outlined"
+          onClick={() => history.push('/search')}>
           Search Page
         </Button>
       </Box>
@@ -159,14 +136,15 @@ const Contacts = () => {
                       <TableCell sx={{ color: '#0E5A7B', fontSize: '18px' }}>Email</TableCell>
                     </TableRow>
                   </TableHead>
+                  <TableBody>
 
-                  {
-                    Data?.map((item: Item) => (
+                    {
+                      Data?.map((item: Item) => (
 
-                      <TableBody key={item.id}>
+
                         <TableRow
-
-                          sx={{ '&:last-child td, &:last-child th': { border: 0} }}
+                          key={item.id}
+                          sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                           <TableCell component="th" sx={{ color: 'blue' }} scope="row">
                             <Input
@@ -219,18 +197,18 @@ const Contacts = () => {
                             </Button>
                           </Stack>
                         </TableRow>
-                      </TableBody>
 
-                    ))}
 
+                      ))}
+                  </TableBody>
                 </Table>
               </TableContainer>
             </form>
           )}
-     
+
         </Formik>
       </Box>
-      <Typography sx={{color: 'red', fontFamily:'fantasy',fontSize: '25px' }}>Pless. Click Input To Edit</Typography>
+      <Typography sx={{ color: 'red', fontFamily: 'fantasy', fontSize: '25px' }}>Pless. Click Input To Edit</Typography>
     </>
   )
 }

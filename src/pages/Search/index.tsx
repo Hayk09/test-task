@@ -12,7 +12,6 @@ import {
     Paper,
     TableRow,
     Stack,
-
 } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -32,16 +31,12 @@ const SearchPage = () => {
     const [value, setValue] = useState('')
 
 
-
-    console.log(filters)
-
     return (
 
         <>
             <Box sx={{
                 display: 'flex',
                 justifyContent: 'space-around',
-                // marginRight: '8rem'
                 padding: '4rem'
             }}>
                 <Button
@@ -76,14 +71,14 @@ const SearchPage = () => {
                                     <TableCell sx={{ color: '#0E5A7B', fontSize: '18px' }}>Email</TableCell>
                                 </TableRow>
                             </TableHead>
-
+                             
+                            <TableBody >
                             {
                                 filters?.filter((item: Item) => item?.name?.toLowerCase()
                                     .includes(value?.toLocaleLowerCase())).map((item: Item) => (
 
-                                        <TableBody key={item.id}>
                                             <TableRow
-
+                                                key={item.id}
                                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                             >
                                                 <TableCell component="th" sx={{ color: 'blue' }} scope="row">
@@ -111,10 +106,10 @@ const SearchPage = () => {
                                                 <Stack direction="row" spacing={2}>
                                                 </Stack>
                                             </TableRow>
-                                        </TableBody>
+                                     
 
                                     ))}
-
+                         </TableBody>
                         </Table>
                     </TableContainer>
                 </form>

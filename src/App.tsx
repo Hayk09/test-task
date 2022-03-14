@@ -4,7 +4,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import { useRoutes } from './routes';
 import store from './store';
-// import { RouterProvider } from './providers';
 type RootState = ReturnType<typeof store.getState>
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* <RouterProvider/> */}
         {routes}
       </div>
     </Router>
