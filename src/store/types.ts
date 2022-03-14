@@ -9,6 +9,7 @@ export enum todoActionType {
    CHANGE_TEXT = 'CHANGE_TEXT'
 }
 
+
 export type Item = {
    name: string,
    email: string,
@@ -19,16 +20,10 @@ export type Item = {
 
 export interface TodoState {
    contacts: [] | any
-   isAuth: boolean
+   isAuth: any
 }
 interface contacts {
    type: todoActionType;
-   payload: {
-      id: string,
-      email: string,
-      phone: string,
-      name: string
-   }
+   payload: any
 }
-
 export type TodoTypes = contacts

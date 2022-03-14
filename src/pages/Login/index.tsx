@@ -1,21 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import * as yup from "yup"
 import { Formik } from 'formik'
+import { useDispatch } from 'react-redux';
+import store from '../../store';
 import {
   Box,
   Button,
   Input,
   Typography
 } from '@mui/material';
-import { useRoutes } from '../../routes';
+import { todoActionType } from '../../store/types';
 
 
 
 
 const Login = () => {
+   const dispatch = useDispatch()
    const history = useHistory()
-   const routes = useRoutes()
+   const [isLogin, setIsLogin] = useState(false)
+ 
+
+   const handleClick = () => {
+     dispatch({
+       type: todoActionType.CHANGE_TEXT,
+       payload: {
+         isLogin
+        } 
+       
+     })
+   }
 
 
   const validationsSchema = yup.object().shape({
@@ -73,6 +87,7 @@ const Login = () => {
             try {
               window.localStorage.setItem('user', JSON.stringify(values))
               if (values.email === 'admin@gmail.com') {
+                 setIsLogin(true)
                 history.push("/contacts");
               }else {
                 history.push('/error')
@@ -137,6 +152,7 @@ const Login = () => {
                 color='inherit'
                 disabled={!isValid && !dirty}
                 type='submit'
+                onClick={handleClick}
               >
                 Login
               </Button>

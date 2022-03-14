@@ -19,7 +19,6 @@ interface Props {
 const InputModal = ({ handleClose }: Props) => {
   const dispatch = useDispatch()
 
-  // let regexp = new RegExp('^[A-z\s][A-z\d\s]+$')
 
   const validationsSchema = yup.object().shape({
     phone: yup
@@ -28,8 +27,6 @@ const InputModal = ({ handleClose }: Props) => {
       .required('necessarily'),
     name: yup
       .string()
-      //   .min(4, 'Too short!')
-      //   .max(20, 'short!')
       .required('necessarily'),
     email: yup
       .string()
