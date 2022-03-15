@@ -20,7 +20,7 @@ export type Item = {
 
 export interface TodoState {
    contacts: [] | any
-   isAuth: any
+   isAuth: boolean
 }
 interface contacts {
    type: todoActionType;

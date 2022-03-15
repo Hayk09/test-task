@@ -35,7 +35,7 @@ export const todoReducer = ( state = initialState, action:TodoTypes ) => {
         return state
     }
     case todoActionType.CHANGE_TEXT: {
-
+        console.log(action.payload, 'paylod')
         return {...state,isAuth: action.payload}
      }
        default: return state

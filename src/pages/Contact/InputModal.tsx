@@ -48,7 +48,6 @@ const InputModal = ({ handleClose }: Props) => {
         }
         validateOnBlur
         onSubmit={(values) => {
-          console.log(values)
           dispatch({
             type: todoActionType.ADD_TEXT,
             payload: { ...values, id: uuidv4() }

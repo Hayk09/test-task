@@ -32,6 +32,7 @@ type RootState = ReturnType<typeof store.getState>
 const Contacts = () => {
   const Data = useSelector((state: RootState) => state.todo.contacts)
   const [disabled, setDisabled] = useState(true)
+  const [isExit, setIsExit] = useState(false)
   const dispatch = useDispatch()
   const history = useHistory()
 
@@ -49,6 +50,15 @@ const Contacts = () => {
     })
 
   }
+  const handleExit = () => {
+    setIsExit(false)
+    dispatch({
+      type: todoActionType.CHANGE_TEXT,
+      payload: isExit
+    })
+    history.push('/')
+
+  }
 
   return (
 
@@ -56,7 +66,6 @@ const Contacts = () => {
       <Box sx={{
         display: 'flex',
         justifyContent: 'space-around',
-        // marginRight: '8rem'
         padding: '4rem'
       }}>
         <Button
@@ -64,10 +73,9 @@ const Contacts = () => {
             height: '35px',
             width: '150px',
             marginTop: '2rem'
-
           }}
           variant="outlined"
-          onClick={() => history.push('/')}>
+          onClick={handleExit}>
           Sign Out
         </Button>
         <Modal />

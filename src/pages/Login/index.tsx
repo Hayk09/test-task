@@ -15,20 +15,20 @@ import { todoActionType } from '../../store/types';
 
 
 const Login = () => {
-   const dispatch = useDispatch()
-   const history = useHistory()
-   const [isLogin, setIsLogin] = useState(false)
- 
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const [isLogin, setIsLogin] = useState(true)
+  const [isError, setIsError] = useState(false)
+    
 
-   const handleClick = () => {
-     dispatch({
-       type: todoActionType.CHANGE_TEXT,
-       payload: {
-         isLogin
-        } 
-       
-     })
-   }
+  const handleClick = () => {
+    dispatch({
+      type: todoActionType.CHANGE_TEXT,
+      payload:  isLogin
+      
+
+    })
+  }
 
 
   const validationsSchema = yup.object().shape({
@@ -83,21 +83,22 @@ const Login = () => {
           }
           validateOnBlur
           onSubmit={(values) => {
+          
             try {
               window.localStorage.setItem('user', JSON.stringify(values))
               if (values.email === 'admin@gmail.com') {
-                 setIsLogin(true)
+                setIsLogin(true)
                 history.push("/contacts");
-              }else {
-                history.push('/error')
+              } else {
+                setIsError(true)
               }
-        
+
             } catch (e) {
               console.log("error signing in", e);
             }
 
           }
-            
+
           }
           validationSchema={validationsSchema}
         >
@@ -125,7 +126,7 @@ const Login = () => {
                   onBlur={handleBlur}
                   value={values.email} />
 
-                {touched.email && errors.email && <Typography  color='red'>{errors.email}</Typography>}
+                {touched.email && errors.email && <Typography color='red'>{errors.email}</Typography>}
 
                 <Input
                   sx={{
@@ -142,6 +143,7 @@ const Login = () => {
                   value={values.password} />
                 {touched.password && errors.password && <Typography color='red'>{errors.password}</Typography>}
               </Box>
+
               <Button
                 sx={{
                   marginTop: '4rem',
@@ -155,6 +157,16 @@ const Login = () => {
               >
                 Login
               </Button>
+              {isError &&
+                <Typography
+                  sx={{
+                    color: 'red',
+                    fontFamily: 'fantasy',
+                    marginTop: '2rem'
+                  }}>
+                  Error Email, No User
+                </Typography>
+              }
             </form>
           )}
 
