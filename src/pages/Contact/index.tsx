@@ -25,16 +25,14 @@ import { useHistory } from 'react-router-dom';
 
 
 
-
-
 type RootState = ReturnType<typeof store.getState>
 
 const Contacts = () => {
   const Data = useSelector((state: RootState) => state.todo.contacts)
   const [disabled, setDisabled] = useState(true)
-  const [isExit, setIsExit] = useState(false)
   const dispatch = useDispatch()
   const history = useHistory()
+  const [name, setName] =useState()
 
   const validationsSchema = yup.object().shape({
 
@@ -51,14 +49,27 @@ const Contacts = () => {
 
   }
   const handleExit = () => {
-    setIsExit(false)
+   
+    localStorage.removeItem('isAuth')
     dispatch({
       type: todoActionType.CHANGE_TEXT,
-      payload: isExit
+      payload: false
     })
     history.push('/')
 
   }
+  // const  Changes = () => {
+   
+  //  if(disabled){
+  //    setDisabled(false)
+  //  }else {
+  //    dispatch({
+  //      type:todoActionType.CHEKED_TEXT,
+  //      payload: 
+  //    })
+  //  }
+ 
+  // }
 
   return (
 
@@ -109,22 +120,22 @@ const Contacts = () => {
           }
           }
           validateOnBlur
-          onSubmit={(values, id) => {
-            console.log(values, id)
-            try {
+          onSubmit={(values) => {
+            console.log(values,'vle')
+            if(disabled) setDisabled(false)
+             else{
               dispatch({
                 type: todoActionType.EDIT_TEXT,
                 payload: {
-                  id: id,
+                  
                   ...values
                 }
 
               })
+              setDisabled(true)
 
-
-            } catch (e) {
-              console.log("error", e);
-            }
+             }
+             
 
           }
           }
@@ -132,7 +143,7 @@ const Contacts = () => {
         >
 
 
-          {({ errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
+          {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty}) => (
 
             <form className='form' onSubmit={handleSubmit} >
               <TableContainer component={Paper}>
@@ -158,9 +169,9 @@ const Contacts = () => {
                             <Input
                               disabled={disabled}
                               defaultValue={item.name}
+                              // id={item.id}
                               type='name'
                               name='name'
-                              onDoubleClick={() => setDisabled(false)}
                               onChange={handleChange}
                               onBlur={handleBlur}
                             />
@@ -169,7 +180,6 @@ const Contacts = () => {
                             <Input
                               sx={{ cursor: "pointer" }}
                               disabled={disabled}
-                              onDoubleClick={() => setDisabled(false)}
                               autoComplete={'off'}
                               type='phone'
                               name='phone'
@@ -183,7 +193,6 @@ const Contacts = () => {
                             <Input
                               disabled={disabled}
                               defaultValue={item.email}
-                              onDoubleClick={() => setDisabled(false)}
                               name='email'
                               onChange={handleChange}
                               onBlur={handleBlur} />
@@ -193,8 +202,8 @@ const Contacts = () => {
                           <Stack direction="row" spacing={2}>
                             <Button
                               disabled={!isValid && dirty}
-                              onClick={() => setDisabled(true)}
-                              type='submit'
+                              // onClick={()=>Changes(item.id)}
+                               type='submit'
                               sx={{ marginLeft: '2rem' }}>
                               <EditIcon />
                             </Button>

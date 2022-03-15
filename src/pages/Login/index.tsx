@@ -17,18 +17,18 @@ import { todoActionType } from '../../store/types';
 const Login = () => {
   const dispatch = useDispatch()
   const history = useHistory()
-  const [isLogin, setIsLogin] = useState(true)
+  // const [isLogin, setIsLogin] = useState(false)
   const [isError, setIsError] = useState(false)
     
 
-  const handleClick = () => {
-    dispatch({
-      type: todoActionType.CHANGE_TEXT,
-      payload:  isLogin
+  // const handleClick = () => {
+  //   dispatch({
+  //     type: todoActionType.CHANGE_TEXT,
+  //     payload:  isLogin
       
 
-    })
-  }
+  //   })
+  // }
 
 
   const validationsSchema = yup.object().shape({
@@ -83,11 +83,14 @@ const Login = () => {
           }
           validateOnBlur
           onSubmit={(values) => {
-          
+            console.log(values,'login')
             try {
-              window.localStorage.setItem('user', JSON.stringify(values))
+              window.localStorage.setItem('isAuth', JSON.stringify(values))
               if (values.email === 'admin@gmail.com') {
-                setIsLogin(true)
+                 dispatch({
+                   type:todoActionType.CHANGE_TEXT,
+                   payload: true
+                 })
                 history.push("/contacts");
               } else {
                 setIsError(true)
@@ -153,7 +156,7 @@ const Login = () => {
                 color='inherit'
                 disabled={!isValid && !dirty}
                 type='submit'
-                onClick={handleClick}
+                // onClick={handleClick}
               >
                 Login
               </Button>

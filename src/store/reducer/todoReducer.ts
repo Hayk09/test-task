@@ -14,6 +14,7 @@ export const todoReducer = ( state = initialState, action:TodoTypes ) => {
    
    switch(action.type){
        case todoActionType.ADD_TEXT: {
+        console.log(action.payload,'add')
         return {...state, contacts:[...state.contacts, action.payload]}
        }
        case todoActionType.DELETE_TEXT: {
@@ -23,9 +24,9 @@ export const todoReducer = ( state = initialState, action:TodoTypes ) => {
     }
     case todoActionType.EDIT_TEXT: {
       state.contacts =   state.contacts.map((t:Item)=> {
-      
+            // console.log(action.payload,'nsajcbjsa')
             if(t.id === action.payload.id){
-                console.log(t.id,'id')
+                // console.log(t.id,'id')
                t.email = action.payload.email
                t.name = action.payload.name
                t.phone = action.payload.phone
@@ -35,7 +36,7 @@ export const todoReducer = ( state = initialState, action:TodoTypes ) => {
         return state
     }
     case todoActionType.CHANGE_TEXT: {
-        console.log(action.payload, 'paylod')
+        // console.log(action.payload, 'paylod')
         return {...state,isAuth: action.payload}
      }
        default: return state
