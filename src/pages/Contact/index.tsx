@@ -7,11 +7,10 @@ import {
   Box,
   Button,
   TableContainer,
-  TableCell,
-  TableHead,
   Paper,
+  TableHead,
   TableRow,
-  Typography,
+  TableCell,
 } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';

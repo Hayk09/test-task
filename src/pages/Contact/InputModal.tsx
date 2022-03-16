@@ -19,7 +19,6 @@ interface Props {
 const InputModal = ({ handleClose }: Props) => {
   const dispatch = useDispatch()
 
-
   const validationsSchema = yup.object().shape({
     phone: yup
       .number()
@@ -81,7 +80,6 @@ const InputModal = ({ handleClose }: Props) => {
                 sx={{
                   width: '250px',
                   marginBottom: '2rem',
-                  // marginLeft: '2rem'
 
                 }}
                 autoComplete={'off'}

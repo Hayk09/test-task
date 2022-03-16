@@ -39,7 +39,7 @@ const SearchPage = () => {
                 justifyContent: 'space-around',
                 padding: '4rem'
             }}>
-                <Button
+                {/* <Button
                     sx={{
                         height: '35px',
                         width: '150px',
@@ -49,7 +49,7 @@ const SearchPage = () => {
                     variant="outlined"
                     onClick={() => history.push('/')}>
                     Sign Out
-                </Button>
+                </Button> */}
                 <Input placeholder='search' onChange={(e) => setValue(e.target.value)} />
             </Box>
             <Box sx={{
@@ -63,7 +63,15 @@ const SearchPage = () => {
 
                 <form >
                     <TableContainer component={Paper}>
-                        <Table sx={{ width: 700, marginLeft: '2rem', padding: '2rem' }} aria-label="simple table">  
+                        <Table sx={{ width: 700, marginLeft: '2rem', padding: '2rem' }} aria-label="simple table">
+                            <TableHead>
+                                <TableRow >
+                                    <TableCell sx={{ color: '#0E5A7B', fontSize: '18px' }}>Name</TableCell>
+                                    <TableCell sx={{ color: '#0E5A7B', fontSize: '18px' }}>Phone</TableCell>
+                                    <TableCell sx={{ color: '#0E5A7B', fontSize: '18px' }}>Email</TableCell>
+                                </TableRow>
+                            </TableHead>
+                             
                             <TableBody >
                             {
                                 filters?.filter((item: Item) => item?.name?.toLowerCase()
@@ -81,7 +89,7 @@ const SearchPage = () => {
                                                         name='name' />
                                                 </TableCell>
                                                 <TableCell >
-                                                    <Input
+                                                    <Input  
                                                         sx={{ cursor: "pointer" }}
                                                         disabled={disabled}
                                                         autoComplete={'off'}
@@ -98,6 +106,7 @@ const SearchPage = () => {
                                                 <Stack direction="row" spacing={2}>
                                                 </Stack>
                                             </TableRow>
+
                                     ))}
                          </TableBody>
                         </Table>
