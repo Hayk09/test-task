@@ -12,24 +12,11 @@ import {
 import { todoActionType } from '../../store/types';
 
 
-
-
 const Login = () => {
   const dispatch = useDispatch()
   const history = useHistory()
-  // const [isLogin, setIsLogin] = useState(false)
   const [isError, setIsError] = useState(false)
     
-
-  // const handleClick = () => {
-  //   dispatch({
-  //     type: todoActionType.CHANGE_TEXT,
-  //     payload:  isLogin
-      
-
-  //   })
-  // }
-
 
   const validationsSchema = yup.object().shape({
     password: yup
@@ -156,7 +143,6 @@ const Login = () => {
                 color='inherit'
                 disabled={!isValid && !dirty}
                 type='submit'
-                // onClick={handleClick}
               >
                 Login
               </Button>
