@@ -37,7 +37,8 @@ const InputModal = ({ handleClose }: Props) => {
   })
 
   return (
-    <Box>
+    <Box 
+      sx={{width:'400px'}}>
       <Formik
         initialValues={{
           phone: "",
@@ -79,8 +80,8 @@ const InputModal = ({ handleClose }: Props) => {
               <Input
                 sx={{
                   width: '250px',
-                  marginBottom: '10px',
-                  marginLeft: '2rem'
+                  marginBottom: '2rem',
+                  // marginLeft: '2rem'
 
                 }}
                 autoComplete={'off'}
@@ -96,7 +97,7 @@ const InputModal = ({ handleClose }: Props) => {
               <Input
                 sx={{
                   width: '250px',
-                  marginBottom: '10px',
+                  marginBottom: '2rem',
                 }}
                 autoComplete={'off'}
                 placeholder='email'

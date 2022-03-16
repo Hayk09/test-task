@@ -63,15 +63,7 @@ const SearchPage = () => {
 
                 <form >
                     <TableContainer component={Paper}>
-                        <Table sx={{ width: 700, marginLeft: '2rem', padding: '2rem' }} aria-label="simple table">
-                            <TableHead>
-                                <TableRow >
-                                    <TableCell sx={{ color: '#0E5A7B', fontSize: '18px' }} >Name</TableCell>
-                                    <TableCell sx={{ color: '#0E5A7B', fontSize: '18px' }}>Phone</TableCell>
-                                    <TableCell sx={{ color: '#0E5A7B', fontSize: '18px' }}>Email</TableCell>
-                                </TableRow>
-                            </TableHead>
-                             
+                        <Table sx={{ width: 700, marginLeft: '2rem', padding: '2rem' }} aria-label="simple table">  
                             <TableBody >
                             {
                                 filters?.filter((item: Item) => item?.name?.toLowerCase()
@@ -106,8 +98,6 @@ const SearchPage = () => {
                                                 <Stack direction="row" spacing={2}>
                                                 </Stack>
                                             </TableRow>
-                                     
-
                                     ))}
                          </TableBody>
                         </Table>
