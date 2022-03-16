@@ -11,10 +11,11 @@ export enum todoActionType {
 
 
 export type Item = {
-   name: string,
+   name?: string,
    email: string,
    id: string,
    phone: string
+   isEdit?: boolean
 }
 
 
