@@ -79,10 +79,6 @@ const ListItem = ({ name, phone, email, id, isEdit }: Props) => {
       </TableRow>
     </>
 
-
-
-
-
   )
 }
 
