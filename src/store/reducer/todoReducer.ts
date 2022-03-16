@@ -16,17 +16,15 @@ export const todoReducer = ( state = initialState, action:TodoTypes ) => {
        case todoActionType.ADD_TEXT: {
         return {...state, contacts:[...state.contacts, action.payload]}
        }
-       case todoActionType.DELETE_TEXT: {
+       case todoActionType.DELETE_TEXT: { 
         state.contacts =  Object.assign([],state?.contacts.filter((t:Item)=> t.id !== action.payload.id)) 
-        console.log(state.contacts)
         return {...state, contacts:[...state.contacts] } 
     }
     case todoActionType.EDIT_TEXT: { 
-    const id = action.payload
     const isEditContacts = state.contacts.map((item: Item) => ({
         ...item,
-        isEdit: item.id === id ? !item.isEdit : false,
-        email:  item.id ===  action.payload.id? item.email = action.payload.email: item.email,
+        isEdit: item.id === action.payload.id? !item.isEdit : false,
+        email: item.id ===  action.payload.id? item.email = action.payload.email: item.email,
         phone: item.id === action.payload.id? item.phone = action.payload.phone: item.phone,
         name: item.id === action.payload.id? item.name = action.payload.name: item.name,
        

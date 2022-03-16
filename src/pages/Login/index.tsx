@@ -9,8 +9,7 @@ import {
   Input,
   Typography
 } from '@mui/material';
-import { todoActionType } from '../../store/types';
-
+import { setChangeText } from '../../store/action';
 
 const Login = () => {
   const dispatch = useDispatch()
@@ -70,14 +69,10 @@ const Login = () => {
           }
           validateOnBlur
           onSubmit={(values) => {
-            console.log(values,'login')
             try {
               window.localStorage.setItem('isAuth', JSON.stringify(values))
               if (values.email === 'admin@gmail.com') {
-                 dispatch({
-                   type:todoActionType.CHANGE_TEXT,
-                   payload: true
-                 })
+                 dispatch(setChangeText(true))
                 history.push("/contacts");
               } else {
                 setIsError(true)
@@ -131,6 +126,7 @@ const Login = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password} />
+
                 {touched.password && errors.password && <Typography color='red'>{errors.password}</Typography>}
               </Box>
 

@@ -19,8 +19,6 @@ import { useHistory } from 'react-router-dom';
 
 
 
-
-
 type RootState = ReturnType<typeof store.getState>
 
 const SearchPage = () => {
@@ -39,7 +37,7 @@ const SearchPage = () => {
                 justifyContent: 'space-around',
                 padding: '4rem'
             }}>
-                {/* <Button
+                <Button
                     sx={{
                         height: '35px',
                         width: '150px',
@@ -47,9 +45,9 @@ const SearchPage = () => {
 
                     }}
                     variant="outlined"
-                    onClick={() => history.push('/')}>
-                    Sign Out
-                </Button> */}
+                    onClick={() => history.push('/contacts')}>
+                    Back
+                </Button>
                 <Input placeholder='search' onChange={(e) => setValue(e.target.value)} />
             </Box>
             <Box sx={{
@@ -63,15 +61,7 @@ const SearchPage = () => {
 
                 <form >
                     <TableContainer component={Paper}>
-                        <Table sx={{ width: 700, marginLeft: '2rem', padding: '2rem' }} aria-label="simple table">
-                            <TableHead>
-                                <TableRow >
-                                    <TableCell sx={{ color: '#0E5A7B', fontSize: '18px' }}>Name</TableCell>
-                                    <TableCell sx={{ color: '#0E5A7B', fontSize: '18px' }}>Phone</TableCell>
-                                    <TableCell sx={{ color: '#0E5A7B', fontSize: '18px' }}>Email</TableCell>
-                                </TableRow>
-                            </TableHead>
-                             
+                        <Table sx={{ width: 700, marginLeft: '2rem', padding: '2rem' }} aria-label="simple table"> 
                             <TableBody >
                             {
                                 filters?.filter((item: Item) => item?.name?.toLowerCase()
