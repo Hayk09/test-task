@@ -109,11 +109,7 @@ const InputModal = ({ handleClose }: Props) => {
 
             </Box>
 
-            <Button
-              sx={{
-                marginTop: '4rem',
-
-              }}
+            <Button           
               variant="outlined"
               color='inherit'
               disabled={!isValid && !dirty}
