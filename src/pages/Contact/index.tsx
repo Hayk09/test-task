@@ -19,8 +19,7 @@ import {setChangeText } from '../../store/action'
 type RootState = ReturnType<typeof store.getState>
 
 
-const Contacts = ({todoData}:any) => {
-  console.log(todoData, 'props')
+const Contacts = () => {
   const Data = useSelector((state: RootState) => state.todo.contacts)
   const dispatch = useDispatch()
   const history = useHistory()
