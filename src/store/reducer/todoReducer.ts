@@ -29,7 +29,7 @@ export const todoReducer = ( state = initialState, action:TodoTypes ) => {
         name: item.id === action.payload.id? item.name = action.payload.name: item.name,
        
     }))
-        console.log(isEditContacts,'isEditContacts')
+      
         return {...state, contacts: isEditContacts }
     }
     case todoActionType.CHANGE_TEXT: {
